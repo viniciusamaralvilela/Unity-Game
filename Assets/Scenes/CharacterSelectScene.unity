@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 380377183}
   - component: {fileID: 380377182}
   - component: {fileID: 380377181}
+  - component: {fileID: 380377185}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -302,6 +303,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &380377185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380377180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fa424459ec7454782e38ea895d73f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &548648515
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 548648518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 380377185}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: SelectMosca
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &548648518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +622,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 772540971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 380377185}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: SelectGatti
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &772540971
 MonoBehaviour:
   m_ObjectHideFlags: 0
