@@ -1,0 +1,12 @@
+
+=== Mon Nov 24 19:41:19 2025
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 10.2.0 to 11.0.0
+  com.unity.2d.aseprite from version 1.2.4 to 1.2.5
+  com.unity.2d.psdimporter from version 10.1.0 to 10.1.1
+  com.unity.2d.spriteshape from version 10.1.0 to 11.0.0
+  com.unity.2d.tilemap.extras from version 4.3.0 to 4.3.1

@@ -40,7 +40,7 @@ public class InimigoPerseguidor : MonoBehaviour
             EntrarEscada();
 
             float dirY = Mathf.Sign(jogador.position.y - transform.position.y);
-            rb.velocity = new Vector2(0, dirY * velocidadeEscada);
+            rb.linearVelocity = new Vector2(0, dirY * velocidadeEscada);
 
             return;
         }
@@ -50,13 +50,13 @@ public class InimigoPerseguidor : MonoBehaviour
         }
 
         // ---------- MOVIMENTO NORMAL ----------
-        rb.velocity = new Vector2(direcao * velocidade, rb.velocity.y);
+        rb.linearVelocity = new Vector2(direcao * velocidade, rb.linearVelocity.y);
 
         if (direcao > 0 && !olhandoDireita) Virar();
         if (direcao < 0 && olhandoDireita) Virar();
 
         if (TemBuraco() && EstaNoChao())
-            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
     }
 
     bool EstaNoChao()
