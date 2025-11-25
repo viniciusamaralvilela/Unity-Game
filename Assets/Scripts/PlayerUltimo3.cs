@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class PlayerUltimo3  : MonoBehaviour
 {
     private Vector3 spawn;
     private GameObject cenvermelho;
@@ -17,14 +17,11 @@ public class Player : MonoBehaviour
     public float Speed = 5f;
     public float jumpForce = 5f;
     public Rigidbody2D rig;
-
-    public int coletavel = 0;
-    public int coletavel2 = 0;
-    public int coletavel3 = 0;
-    public int coletavel4 = 0;
     public bool isGrounded = true;
 
-    public TextMeshProUGUI portaltxt;
+    // --- UI ---
+    public TextMeshProUGUI winText;
+    public GameObject fadeScreen;
 
     void Start()
     {
@@ -41,6 +38,10 @@ public class Player : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         rig.freezeRotation = true;
 
+        // Desativa tela de vitória no início
+        if (winText != null) winText.gameObject.SetActive(false);
+        if (fadeScreen != null) fadeScreen.SetActive(false);
+
         if (Endgame != null) Endgame.SetActive(false);
     }
 
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour
         Cenario();
         Move();
         Jump();
-        EndGame();
     }
 
     void Jump()
@@ -66,15 +66,6 @@ public class Player : MonoBehaviour
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * Speed;
-    }
-
-    public void EndGame()
-    {
-        if (coletavel == 1 && coletavel2 == 1 && coletavel3 == 1 && coletavel4 == 1)
-        {
-            Endgame.SetActive(true);
-            portaltxt.gameObject.SetActive(true);
-        }
     }
 
     public void Cenario()
@@ -107,29 +98,39 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Sistema de morte
         if (collision.collider.CompareTag("Morte"))
         {
             transform.position = spawn;
 
             Perseguir inimigo = FindObjectOfType<Perseguir>();
             if (inimigo != null)
+            {
                 inimigo.Resetar();
                 inimigo.player = this.transform;
+            }
         }
 
+        // --- Sistema de vitória ---
         if (collision.collider.CompareTag("portal"))
         {
-            EndGameUI endGameUI = FindObjectOfType<EndGameUI>();
-            if (endGameUI != null)
+            // Ativa tela escura
+            if (fadeScreen != null)
+                fadeScreen.SetActive(true);
+
+            // Ativa o texto WIN
+            if (winText != null)
             {
-                endGameUI.MostrarFimDeJogo();
+                winText.text = "WIN";
+                winText.gameObject.SetActive(true);
             }
 
+            // Ativa objeto de fim de jogo se existir
             if (Endgame != null)
-            {
-                portaltxt.gameObject.SetActive(true);
                 Endgame.SetActive(true);
-            }
+
+            // Congela o jogo inteiro
+            Time.timeScale = 0f;
         }
     }
 
@@ -145,8 +146,4 @@ public class Player : MonoBehaviour
             isGrounded = false;
     }
 
-    public int AddUm(int value) => coletavel += value;
-    public int AddDois(int value) => coletavel2 += value;
-    public int AddTres(int value) => coletavel3 += value;
-    public int AddQuatro(int value) => coletavel4 += value;
 }

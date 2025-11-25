@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - portal
   - Ladder
+  - Inimigo
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - Ground
   - Ladder
-  - 
-  - 
+  - Enemy
+  - espinho
   - 
   - 
   - 
