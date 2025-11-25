@@ -19,6 +19,9 @@ public class Player2 : MonoBehaviour
     public GameObject back2;
     public GameObject cenvermelho;
     public GameObject cenazul;
+    // DOUBLE JUMP
+    private bool canDoubleJump = false;
+    public bool didDoubleJumpThisFrame = false; // <- IA vai ler isso
 
     // variáveis internas
     private float horizontalInput;

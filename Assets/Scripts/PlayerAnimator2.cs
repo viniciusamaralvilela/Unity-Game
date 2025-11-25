@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class PlayerAnimator2 : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Player player; // <-- CORRIGIDO!
+    [SerializeField] private PlayerUltimo3 player; // <-- CORRIGIDO!
 
     void Update()
     {
